@@ -17,9 +17,11 @@ class Player
 
 	repeats = all_cards.each_with_object({}) { |rank, memo| memo[rank] = memo[rank] ? memo[rank] + 1 : 1 }
     
+	p all_cards
+
     repeats.keys.each do |rank|
     	if repeats[rank] > 2
-    		log 1000
+    		log_bet 1000
     		return 1000
     	end
     end
@@ -30,7 +32,7 @@ class Player
 		bet = game_state['small_blind'] * 2
 	end
 
-	log bet
+	log_bet bet
 	bet
   end
 
@@ -42,7 +44,13 @@ class Player
 
   end
 
-  def log(bet)
+
+  def log_bet(bet)
   	puts "[LOGGING] BET: #{bet}"
   end
+end
+
+
+class Tactic
+	def initialize()
 end
