@@ -2,7 +2,7 @@ require_relative 'tactic'
 
 class Player
 
-  VERSION = '0.4'
+  VERSION = '0.5'
 
   def bet_request(game_state)
   	log 'GAME_STATE', game_state
@@ -10,7 +10,7 @@ class Player
     tactic = Tactic.new game_state
 
     if tactic.is_street?
-      log_bet 1000
+      log 'street', 1000
       return 1000
     end
 
@@ -30,7 +30,7 @@ class Player
     log 'tactic.by_suit', repeats
     repeats.keys.each do |suit|
       if repeats[suit] >= 5
-        log_bet 1000
+        log 'flash', 1000
         return 1000
       end
     end
