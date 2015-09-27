@@ -1,10 +1,9 @@
-
 class Player
 
-  VERSION = "Default Ruby folding player"
+  VERSION = 0.1
 
   def bet_request(game_state)
-    0
+    20
   end
 
   def showdown(game_state)
