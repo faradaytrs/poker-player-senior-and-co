@@ -12,7 +12,7 @@ class Player
     log 'tactic.by_rank', repeats
   	repeats.keys.each do |rank|
       bet = 0
-      bet = 600  if repeats[rank] == 2 && ['10', 'J', 'Q', 'K', 'A'].include? rank
+      bet = 600  if repeats[rank] == 2 && ['10', 'J', 'Q', 'K', 'A'].include?(rank)
       bet = 1000 if repeats[rank] > 2
       if bet > 0
         log_bet bet
