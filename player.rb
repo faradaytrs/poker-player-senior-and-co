@@ -27,7 +27,7 @@ class Player
     if our_cards[0]['rank'] == our_cards[1]['rank'] 
   		bet = 1000
 	else
-		bet = 40
+		bet = game_state['small_blind'] * 2
 	end
 
 	log bet
