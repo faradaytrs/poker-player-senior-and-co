@@ -33,10 +33,11 @@ class Player
         log 'flash', 1000
         return 1000
       end
+      if repeats[suit] == 4 && tactic.cards_count == 5
+        log 'prob. flash', game_state['pot']
+        return game_state['pot']
+      end
     end
-
-
-
 
     blind = game_state['small_blind'] * 2
   	log_bet blind

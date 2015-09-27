@@ -14,7 +14,7 @@ class Tactic
   end
 
   def is_street?
-    return false if all_cards('rank').size < 5
+    return false if cards_count < 5
     cards = all_cards('rank').map do |rank|
       case rank
         when 'J' then 11
@@ -28,6 +28,10 @@ class Tactic
       return false if current - prev != 1
     end
     true
+  end
+
+  def cards_count
+    all_cards('rank').size
   end
 
   private
