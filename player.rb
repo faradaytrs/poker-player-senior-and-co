@@ -13,7 +13,7 @@ class Player
   	our_cards = game_state['players'][game_state['in_action']]['hole_cards']
 
 
-	all_cards = our_cards.map { |cd| cd['rank'] } + community_cards.map { |cd| cd['rank'] }
+	all_cards = our_cards.map { |cd| cd['rank'] } + game_state['community_cards'].map { |cd| cd['rank'] }
 
 	repeats = all_cards.each_with_object({}) { |rank, memo| memo[rank] = memo[rank] ? memo[rank] + 1 : 1 }
     
