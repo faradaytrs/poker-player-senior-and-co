@@ -14,6 +14,7 @@ class Tactic
   end
 
   def is_street?
+    return false if all_cards.size < 5
     cards = all_cards.map do |c|
       case c['rank']
         when 'J' then 11
