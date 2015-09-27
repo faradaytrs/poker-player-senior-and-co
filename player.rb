@@ -9,10 +9,10 @@ class Player
 
     tactic = Tactic.new game_state
 
-    if tactic.is_street?
-      log 'street', 1000
-      return 1000
-    end
+    #if tactic.is_street?
+    #  log 'street', 1000
+    #  return 1000
+    #end
 
     repeats = tactic.by_rank
     log 'tactic.by_rank', repeats
