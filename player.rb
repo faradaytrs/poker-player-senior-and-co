@@ -52,5 +52,5 @@ end
 
 
 class Tactic
-	def initialize()
+
 end
