@@ -2,7 +2,7 @@ require_relative 'tactic'
 
 class Player
 
-  VERSION = '0.5'
+  VERSION = 'RANDOMIZE\'EM ALL' 
 
   def bet_request(game_state)
   	log 'GAME_STATE', game_state
@@ -10,16 +10,18 @@ class Player
     tactic = Tactic.new game_state
 
     if tactic.is_street?
-      log 'street', 1000
-      return 1000
+      log 'street', 10000
+      return 10000
     end
 
     repeats = tactic.by_rank
     log 'tactic.by_rank', repeats
   	repeats.keys.each do |rank|
       bet = 0
-      bet = 600  if repeats[rank] == 2 && ['10', 'J', 'Q', 'K', 'A'].include?(rank)
-      bet = 1000 if repeats[rank] > 2
+      bet = 200 if repeats[rank] == 2 && ['2', '3', '4', '5', '6', '7', '8'].include?(rank)
+      bet = 400 if repeats[rank] == 2 && ['5', '6', '7', '8', '9'].include?(rank)
+      bet = 600 if repeats[rank] == 2 && ['10', 'J', 'Q', 'K', 'A'].include?(rank)
+      bet = 10000 if repeats[rank] > 2
       if bet > 0
         log_bet bet
         return bet
@@ -30,8 +32,8 @@ class Player
     log 'tactic.by_suit', repeats
     repeats.keys.each do |suit|
       if repeats[suit] >= 5
-        log 'flash', 1000
-        return 1000
+        log 'flash', 10000
+        return 10000
       end
       if repeats[suit] == 4 && tactic.cards_count == 5
         log 'prob. flash', game_state['pot']
