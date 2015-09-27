@@ -14,12 +14,6 @@ class Player
 
   	our_cards[0]['rank'] == our_cards[1]['rank'] ? 1000 : 40
 
-
-
-	rescue Exception => e
-		puts e
-		30
-	end
   end
 
   def showdown(game_state)
