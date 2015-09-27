@@ -14,14 +14,14 @@ class Tactic
   end
 
   def is_street?
-    return false if all_cards.size < 5
-    cards = all_cards.map do |c|
-      case c['rank']
+    return false if all_cards('rank').size < 5
+    cards = all_cards('rank').map do |rank|
+      case rank
         when 'J' then 11
         when 'Q' then 12
         when 'K' then 13
         when 'A' then 14
-        else c['rank'].to_i
+        else rank.to_i
       end
     end.sort.uniq
     cards.inject(cards[0]) do |prev, current|
