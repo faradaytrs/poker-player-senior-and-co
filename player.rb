@@ -20,7 +20,7 @@ class Player
 	p all_cards
 
     repeats.keys.each do |rank|
-    	if repeats[rank] > 2
+    	if repeats[rank] >= 2
     		log_bet 1000
     		return 1000
     	end
