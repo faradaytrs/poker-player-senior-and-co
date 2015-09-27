@@ -12,8 +12,12 @@ class Player
 
   	our_cards = game_state['players'][game_state['in_action']]['hole_cards']
 
-  	our_cards[0]['rank'] == our_cards[1]['rank'] ? 1000 : 40
-
+  	if our_cards[0]['rank'] == our_cards[1]['rank'] 
+  		puts '[22] Pair'
+  		1000
+	else
+		40
+	end
   end
 
   def showdown(game_state)
