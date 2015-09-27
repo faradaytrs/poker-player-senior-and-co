@@ -14,12 +14,19 @@ class Player
       return 10000
     end
 
+    # by rank
     repeats = tactic.by_rank
     log 'tactic.by_rank', repeats
+    
+    if tactic.pair_weight >= 3
+      log 'pair_weight', 10000
+      return 10000
+    end
+
   	repeats.keys.each do |rank|
       bet = 0
-      bet = 200 if repeats[rank] == 2 && ['2', '3', '4', '5', '6', '7', '8'].include?(rank)
-      bet = 400 if repeats[rank] == 2 && ['5', '6', '7', '8', '9'].include?(rank)
+      bet = 200 if repeats[rank] == 2 && ['2', '3', '4', '5'].include?(rank)
+      bet = 400 if repeats[rank] == 2 && ['6', '7', '8', '9'].include?(rank)
       bet = 600 if repeats[rank] == 2 && ['10', 'J', 'Q', 'K', 'A'].include?(rank)
       bet = 10000 if repeats[rank] > 2
       if bet > 0
@@ -28,6 +35,7 @@ class Player
       end
     end
 
+    # by suit
     repeats = tactic.by_suit
     log 'tactic.by_suit', repeats
     repeats.keys.each do |suit|

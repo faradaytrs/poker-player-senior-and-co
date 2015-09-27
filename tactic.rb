@@ -30,6 +30,17 @@ class Tactic
     true
   end
 
+  def pair_weight
+    data = by_rank
+    data.keys.inject(0) do |acc, rank|
+      if data[rank] > 1
+        acc + data[rank]
+      else
+        acc
+      end
+    end
+  end  
+
   def cards_count
     all_cards('rank').size
   end
