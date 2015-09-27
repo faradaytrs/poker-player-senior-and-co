@@ -18,16 +18,20 @@ class Player
 	repeats = all_cards.each_with_object({}) { |rank, memo| memo[rank] = memo[rank] ? memo[rank] + 1 : 1 }
     
     repeats.keys.each do |rank|
-    	return 1000 if repeats[rank] > 2
+    	if repeats[rank] > 2
+    		log 1000
+    		return 1000
+    	end
     end
 
     if our_cards[0]['rank'] == our_cards[1]['rank'] 
-  		puts '[22] Pair'
-  		1000
+  		bet = 1000
 	else
-		40
+		bet = 40
 	end
 
+	log bet
+	bet
   end
 
   def showdown(game_state)
@@ -36,5 +40,9 @@ class Player
 
   def rank
 
+  end
+
+  def log(bet)
+  	puts "[LOGGING] BET: #{bet}"
   end
 end
