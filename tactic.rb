@@ -13,6 +13,22 @@ class Tactic
     all_cards('suit').each_with_object({}) { |rank, memo| memo[rank] = memo[rank] ? memo[rank] + 1 : 1 }
   end
 
+  def is_street?
+    cards = all_cards.map do |c|
+      case c['rank']
+        when 'J' then 11
+        when 'Q' then 12
+        when 'K' then 13
+        when 'A' then 14
+        else c['rank'].to_i
+      end
+    end.sort.uniq
+    cards.inject(cards[0]) do |prev, current|
+      return false if current - prev != 1
+    end
+    true
+  end
+
   private
 
   def all_cards(type)

@@ -2,12 +2,18 @@ require_relative 'tactic'
 
 class Player
 
-  VERSION = '0.3'
+  VERSION = '0.4'
 
   def bet_request(game_state)
   	log 'GAME_STATE', game_state
 
     tactic = Tactic.new game_state
+
+    if tactic.is_street?
+      log_bet 1000
+      return 1000
+    end
+
     repeats = tactic.by_rank
     log 'tactic.by_rank', repeats
   	repeats.keys.each do |rank|
@@ -19,6 +25,7 @@ class Player
         return bet
       end
     end
+
     repeats = tactic.by_suit
     log 'tactic.by_suit', repeats
     repeats.keys.each do |suit|
@@ -27,6 +34,9 @@ class Player
         return 1000
       end
     end
+
+
+
 
     blind = game_state['small_blind'] * 2
   	log_bet blind
